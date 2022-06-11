@@ -1,15 +1,13 @@
 package services.utils;
 
-public class Contact {
+public class ContactInfo {
 
     private String firstName;
     private String lastName;
-    private String number;
 
-    public Contact(String firstName, String lastName, String number) {
+    public ContactInfo(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.number = number;
     }
 
     public String getFirstName() {
@@ -28,20 +26,9 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
 
     @Override
     public String toString() {
-        return "Contact: {" +
-                "\n\tfirstName = '" + firstName + '\'' +
-                ",\n\tlastName = '" + lastName + '\'' +
-                ",\n\tnumber =' " + number + '\'' +
-                "\n}";
+        return firstName + " " + lastName;
     }
 }

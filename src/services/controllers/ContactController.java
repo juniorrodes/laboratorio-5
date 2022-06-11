@@ -1,6 +1,6 @@
 package controllers;
 
-import services.utils.ContactInfo;
+import utils.ContactInfo;
 
 import java.util.HashMap;
 

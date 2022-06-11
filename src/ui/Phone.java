@@ -2,7 +2,7 @@ package ui;
 
 import controllers.ContactController;
 import controllers.LostCallsController;
-import services.utils.ContactInfo;
+import utils.ContactInfo;
 
 import java.util.Scanner;
 

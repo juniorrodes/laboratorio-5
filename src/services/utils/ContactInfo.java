@@ -1,4 +1,4 @@
-package services.utils;
+package utils;
 
 public class ContactInfo {
 

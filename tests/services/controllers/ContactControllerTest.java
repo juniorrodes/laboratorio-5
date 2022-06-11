@@ -1,17 +1,14 @@
-package tests;
-
 // import JUnit packages
 import static org.junit.Assert.*;
-
 
 import org.junit.Before;
 import org.junit.Test;
 
 // services import
 import controllers.ContactController;
-import services.utils.ContactInfo;
+import utils.ContactInfo;
 
-public class ContactInfoControllerTest {
+public class ContactControllerTest {
 
     ContactController contactController;
 
@@ -31,9 +28,9 @@ public class ContactInfoControllerTest {
 
     @Test
     public void testContactCreationSucceed() {
-        ContactInfo contactInfo = this.createDummyContact("José Luis", "99999-9999");
-
-        //assertTrue(this.contactController.insertNewContact(contactInfo.getNumber(), contactInfo));
+        String contactNumber = "99999-9999";
+        ContactInfo contactInfo = this.createDummyContact("José Luis", contactNumber);
+        assertTrue(this.contactController.insertNewContact(contactNumber, contactInfo));
         assertEquals(this.contactController.getContact("99999-9999"), contactInfo);
     }
 
@@ -41,10 +38,10 @@ public class ContactInfoControllerTest {
     public void testContactCreationFail() {
         String contactNumber = "99999-9999";
         ContactInfo contactInfo = this.createDummyContact("José Luis", contactNumber);
-        ContactInfo contactInfoReplace = this.createDummyContact("João Maciel", contactNumber);
+        ContactInfo contactInfoReplace = this.createDummyContact("Guilherme Lacerda", contactNumber);
 
-        //this.contactController.insertNewContact(contactInfo.getNumber(), contactInfo);
-        //assertFalse(this.contactController.insertNewContact(contactInfoReplace.getNumber(), contactInfoReplace));
+        this.contactController.insertNewContact(contactNumber, contactInfo);
+        assertFalse(this.contactController.insertNewContact(contactNumber, contactInfoReplace));
         assertEquals(this.contactController.getContact(contactNumber), contactInfo);
     }
 
@@ -54,9 +51,9 @@ public class ContactInfoControllerTest {
         ContactInfo contactInfo = this.createDummyContact("José Luis", contactNumber);
         ContactInfo contactInfoReplace = this.createDummyContact("João Maciel", contactNumber);
 
-        //this.contactController.insertNewContact(contactInfo.getNumber(), contactInfo);
-        //assertFalse(this.contactController.insertNewContact(contactInfoReplace.getNumber(), contactInfoReplace));
-        //assertEquals(this.contactController.replaceContact(contactNumber, contactInfoReplace), contactInfo);
+        this.contactController.insertNewContact(contactNumber, contactInfo);
+        assertFalse(this.contactController.insertNewContact(contactNumber, contactInfoReplace));
+        this.contactController.replaceContact(contactNumber, contactInfoReplace);
         assertEquals(this.contactController.getContact(contactNumber), contactInfoReplace);
     }
 

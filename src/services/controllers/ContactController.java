@@ -27,7 +27,6 @@ public class ContactController {
         this.putContact(contactNumber, contactInfo);
     }
 
-    //PQ retorna um contato??
     public void deleteContact(String contactNumber) {
         if (!this.containContact(contactNumber)) {
             return;
